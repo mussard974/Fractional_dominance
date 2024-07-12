@@ -49,6 +49,7 @@ results = model.fit(X, y, dominance_param = dominance_param, fractional_param = 
 ```python
 model.graph_all()
 ```
+![Example Image](https://github.com/yourusername/yourrepository/blob/main/example.png)
 
 ### Gini mean difference (GMD) matrix
 
