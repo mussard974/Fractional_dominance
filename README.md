@@ -91,6 +91,47 @@ model.critical_ratios_poverty()
 | diesel_fuel   |           |           |           |              |             | 0.009142   |
 | essence       |           |           |           | 0.009142     |             |            |
 
+* Third Table: for a fixed gamma this returns the percentile below which dominance is respected
+```python
+model.critical_ratios_poverty(gamma = 3)
+```
+|               | butane   | sugar    | flour    | gasoline_all | diesel_fuel | essence   |
+|---------------|----------|----------|----------|--------------|-------------|-----------|
+| butane        |          |          |          |              | 0.502315    | 0.707111  |
+| sugar         |          |          |          |              | 0.527484    | 0.699454  |
+| flour         |          |          |          |              | 0.544996    | 0.759646  |
+| gasoline_all  |          |          |          |              | 0.12359     | 0.640152  |
+| diesel_fuel   | 0.502315 | 0.527484 | 0.544996 | 0.12359      |             |           |
+| essence       | 0.707111 | 0.699454 | 0.759646 | 0.640152     |             |           |
 
 
+### Find the minimal fractional order (from dominance_param to dominance_param + 1)
 
+```python
+model.minimal_frac_dominance_all()
+```
+|               | butane | sugar | flour | gasoline_all | diesel_fuel | essence |
+|---------------|--------|-------|-------|--------------|-------------|---------|
+| butane        | 0.00   | 0.00  | 0.00  | 0.00         | 0.0         | 0.0     |
+| sugar         | 1.94   | 0.00  | 0.00  | 0.00         | 0.0         | 0.0     |
+| flour         | 1.97   | 1.97  | 0.00  | 0.00         | 0.0         | 0.0     |
+| gasoline_all  | 0.00   | 0.00  | 1.98  | 0.00         | 0.0         | 0.0     |
+| diesel_fuel   | 1.87   | 1.87  | 1.91  | 1.82         | 0.0         | 0.0     |
+| essence       | 1.88   | 1.88  | 1.91  | 1.85         | 0.0         | 0.0     |
+
+
+### Graph two $s$-curves
+
+```python
+model.graph("butane", "essence")
+```
+![Example Image](graph_pair.png)
+
+### Confidence intervals of $s$-curves
+```python
+s_curve_butane = results[0,:]
+s_curve_gasoline_all = results[3,:]
+CI_butane = model.bootstrap(s_curve_butane, confidence_interval = 0.99, B = 500)
+CI_gasoline_all = model.bootstrap(s_curve_gasoline_all, confidence_interval = 0.99, B = 500)
+```
+![Example Image](CI-curves.png)
