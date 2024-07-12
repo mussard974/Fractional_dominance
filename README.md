@@ -6,23 +6,21 @@
 
 In this package, we find:
 
-  * Grid search for detecting and minimizing the influence of outliers 
-  * Absolute contributions of the observations 
-  * Relative contributions of the observations (equivalent to cos²)
-  * Feature importance of each variable (U-statistics test)
-  * Outlier detection using Grubbs test 
-  * Example on cars data
+  * Draw $s$-curves with a given fractional dominance order
+  * Compute critical ratios of costs of funds at the poverty line 
+  * Minimal fractional dominance order for $s$-curves dominance
+  * Find the crossing point between $s$-curves (percentiles)
+  * Find the crossing point between $s$-curves (percentiles) for fixed gamma (ratio of costs)
+  * Confidence intervals for $s$-curves
 
 
-### Install outlier_utils and iteration-utilities
-* torch >= 1.9.0
-```python
-!pip install outlier_utils
-!pip install iteration-utilities
-```
+### Libraries
+* numpy
+* pandas
+* matplotlib
+
 
 ### Import Gini PCA
-
 
 ```python
 from Gini_PCA import GiniPca
