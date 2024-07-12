@@ -49,11 +49,48 @@ results = model.fit(X, y, dominance_param = dominance_param, fractional_param = 
 ```python
 model.graph_all()
 ```
-
 ![Example Image](CD-order-1.91.png)
 
-### Gini mean difference (GMD) matrix
+### Test for dominance between all commodities
 
 ```python
-model.gmd(x)
+model.test_dominance_all()
 ```
+|               | butane | sugar | flour | gasoline_all | diesel_fuel | essence |
+|---------------|--------|-------|-------|--------------|-------------|---------|
+| butane        |        | cross | cross | cross        | 1           | 1       |
+| sugar         | cross  |       | cross | cross        | 1           | 1       |
+| flour         | cross  | cross |       | cross        | 1           | 1       |
+| gasoline_all  | cross  | cross | cross |              | 1           | 1       |
+| diesel_fuel   | 0      | 0     | 0     | 0            |             | cross   |
+| essence       | 0      | 0     | 0     | 0            | cross       |         |
+
+### Find the critical ratios of costs of funds at the poverty line (z = 0.5*median(incomes))
+* First Table: critical ratios at z
+* Second Table: Percentiles where the $s$-curves cross
+
+```python
+model.critical_ratios_poverty()
+```
+|               | butane    | sugar     | flour     | gasoline_all | diesel_fuel | essence    |
+|---------------|-----------|-----------|-----------|--------------|-------------|------------|
+| butane        |           | cross     | cross     | cross        | 4.439557    | 6.074869   |
+| sugar         | cross     |           | cross     | cross        | 4.118908    | 5.63611    |
+| flour         | cross     | cross     |           | cross        | 9.314213    | 12.745108  |
+| gasoline_all  | cross     | cross     | cross     |              | 3.311577    | 4.531398   |
+| diesel_fuel   | 4.439557  | 4.118908  | 9.314213  | 3.311577     |             | cross      |
+| essence       | 6.074869  | 5.63611   | 12.745108 | 4.531398     | cross       |            |
+
+
+|               | butane    | sugar     | flour     | gasoline_all | diesel_fuel | essence    |
+|---------------|-----------|-----------|-----------|--------------|-------------|------------|
+| butane        |           | 0.986406  | 0.976196  | 0.027366     |             |            |
+| sugar         | 0.986406  |           | 0.979224  | 0.006945     |             |            |
+| flour         | 0.976196  | 0.979224  |           | 0.981123     |             |            |
+| gasoline_all  | 0.027366  | 0.006945  | 0.981123  |              |             |            |
+| diesel_fuel   |           |           |           |              |             | 0.009142   |
+| essence       |           |           |           | 0.009142     |             |            |
+
+
+
+
