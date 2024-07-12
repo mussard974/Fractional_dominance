@@ -41,7 +41,7 @@ y = base['incomes']
 model = FractionalDominance()
 fractional_param = 0.91
 dominance_param = 1
-results = model.fit(X, y, dominance_param = dominance_param, fractional_param=fractional_param)
+results = model.fit(X, y, dominance_param = dominance_param, fractional_param = fractional_param)
 ```
 
 ### Print the $s$-curves
