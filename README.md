@@ -125,7 +125,7 @@ model.minimal_frac_dominance_all()
 ```python
 model.graph("butane", "essence")
 ```
-![Example Image](graph_pair.png)
+![Example Image](graph-pair.png)
 
 ### Confidence intervals of $s$-curves
 ```python
