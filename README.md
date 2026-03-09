@@ -129,9 +129,6 @@ model.graph("butane", "essence")
 
 ### Confidence intervals of $s$-curves
 ```python
-s_curve_butane = results[0,:]
-s_curve_gasoline_all = results[3,:]
-CI_butane = model.bootstrap(s_curve_butane, confidence_interval = 0.99, B = 500)
-CI_gasoline_all = model.bootstrap(s_curve_gasoline_all, confidence_interval = 0.99, B = 500)
+model.bootstrap("butane", "gasoline_all", B=500, confidence_interval=0.9)
 ```
 ![Example Image](CI-curves.png)
