@@ -4,7 +4,7 @@
 
 ### Fractional dominance is a method to find the best indirect tax reforms
 
-In this package, we find:
+In this package, we find: 
 
   * Draw $s$-curves with a given fractional dominance order
   * Compute critical ratios of costs of funds at the poverty line 
